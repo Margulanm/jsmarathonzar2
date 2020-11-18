@@ -1,5 +1,6 @@
 const firstRow="мама мыла раму";
-const secondRow="мама мыла раму";
+const secondRow="мама мыла рамуууу";
+const CHAR='а';
 // let count1=0;
 // let count2=0;
 function getRow(firstRow,secondRow){
@@ -7,7 +8,7 @@ function getRow(firstRow,secondRow){
     let secondResult=countedChar(secondRow,'а');
     
     if(firstResult===secondResult){
-        return "here is the same number of letter"+countedChar.char;
+        return "here is the same number of letter "+CHAR;
     }
     return firstResult>secondResult?firstRow:secondRow;
     // for(let i=0;i<firstRow.length;i++){
