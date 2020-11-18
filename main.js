@@ -1,4 +1,4 @@
-const firstRow="мама мыла рамуууууууууууу";
+const firstRow="мама мыла ралоололололо";
 const secondRow="мама мыла рамуууу";
 const CHAR='а';
 // let count1=0;
