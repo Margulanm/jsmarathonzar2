@@ -1,51 +1,67 @@
-const firstRow="мама мыла раму";
-const secondRow="мама мыла рамуууу";
-const CHAR='а';
-// let count1=0;
-// let count2=0;
-function getRow(firstRow,secondRow){
-    let firstResult=countedChar(firstRow,'а');
-    let secondResult=countedChar(secondRow,'а');
-    
-    if(firstResult===secondResult){
-        return "here is the same number of letter "+CHAR;
-    }
-    return firstResult>secondResult?firstRow:secondRow;
-    // for(let i=0;i<firstRow.length;i++){
-    //     if(firstRow[i]==="а"){//  firstRow.charAt(i)==='a' <- can do like that
-    //     count1++;
-    //     }
-    // }
-    // for(let k=0;k<secondRow.length;k++){
-    //     if(secondRow[k]==="а"){
-    //     count2++;
-    //     }
-    // }
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon Fight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="body">
+    <header>
+        <img class="logo"
+             title="Reset Game"
+             src="./assets/Pokemon_logo.png"
+             alt="Pokemon">
+    </header>
+    <div class="playground">
+        <div class="pokemon character">
+            <span class="lvl">Lv. 1</span>
 
-    // if(count1>count2)
-    //     return firstRow;
-    
-    // else
-    //     return secondRow;
-    
-}
+            <img src="http://sify4321.000webhostapp.com/pikachu.png" class="sprite">
 
-function countedChar(row, char){
-    let counted=0;
+            <div class="details">
+                <h2 class="name" id="name-character">
+                    Pikachu
+                </h2>
+                <div class="hp">
+                    <div class="bar">
+                        <div class="health" id="progressbar-character" style="width: 100%;"></div>
+                    </div>
+                    <span class="text" id="health-character">100 / 100</span>
+                </div>
+            </div>
+        </div>
 
-    for(let i=0;i<row.length;i++){
-        if(row.charAt(1)===char){//  firstRow.charAt(i)==='a' <- can do like that
-        counted++;
-        }
+        <div class="control">
+            <button class="button" id="btn-kick">
+                Thunder Jolt
+            </button>
+        </div>
 
-        return counted;
-    }
+        <div class="pokemon enemy">
+            <span class="lvl">Lv. 1</span>
 
-}
+            <img src="http://sify4321.000webhostapp.com/charmander.png" class="sprite">
 
+            <div class="details">
+                <h2 class="name" id="name-enemy">
+                    Charmander
+                </h2>
+                <div class="hp">
+                    <div class="bar">
+                        <div class="health" id="progressbar-enemy" style="width: 100%;"></div>
+                    </div>
+                    <span class="text" id="health-enemy">100 / 100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="catch_screen"></div>
 
-
-console.log(getRow(firstRow, secondRow));
-
-
-
+<script src="main.js"></script>
+</body>
+</html>
