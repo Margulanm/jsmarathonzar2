@@ -1,67 +1,63 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pokemon Fight</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="body">
-    <header>
-        <img class="logo"
-             title="Reset Game"
-             src="./assets/Pokemon_logo.png"
-             alt="Pokemon">
-    </header>
-    <div class="playground">
-        <div class="pokemon character">
-            <span class="lvl">Lv. 1</span>
+const $btn = document.getElementById('btn-kick');
+const $btnEnemy = document.getElementById('btn-kick-enemy');
 
-            <img src="http://sify4321.000webhostapp.com/pikachu.png" class="sprite">
+const character = {
+    name: 'Pikachu',
+    defaultHP: 100,
+    damageHP: 100,
+    elHP: document.getElementById('health-character'),
+    elProgressbar: document.getElementById('progressbar-character'),
+}
 
-            <div class="details">
-                <h2 class="name" id="name-character">
-                    Pikachu
-                </h2>
-                <div class="hp">
-                    <div class="bar">
-                        <div class="health" id="progressbar-character" style="width: 100%;"></div>
-                    </div>
-                    <span class="text" id="health-character">100 / 100</span>
-                </div>
-            </div>
-        </div>
+const enemy = {
+    name: 'Pikachu',
+    defaultHP: 100,
+    damageHP: 100,
+    elHP: document.getElementById('health-enemy'),
+    elProgressbar: document.getElementById('progressbar-enemy'),
+}
 
-        <div class="control">
-            <button class="button" id="btn-kick">
-                Thunder Jolt
-            </button>
-        </div>
+$btn.addEventListener('click', function () {
+    changeHP(random(20), character);
+    changeHP(random(20), enemy);
+})
 
-        <div class="pokemon enemy">
-            <span class="lvl">Lv. 1</span>
+$btnEnemy.addEventListener('click', function () {
+    changeHP(random(20), enemy);
+})
 
-            <img src="http://sify4321.000webhostapp.com/charmander.png" class="sprite">
+function init() {
+    console.log('Start game!');
+    renderHP(character);
+    renderHP(enemy);
+}
 
-            <div class="details">
-                <h2 class="name" id="name-enemy">
-                    Charmander
-                </h2>
-                <div class="hp">
-                    <div class="bar">
-                        <div class="health" id="progressbar-enemy" style="width: 100%;"></div>
-                    </div>
-                    <span class="text" id="health-enemy">100 / 100</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="catch_screen"></div>
+function renderHP (person) {
+    renderHPLife(person);
+    renderProgressbarHP(person);
+}
 
-<script src="main.js"></script>
-</body>
-</html>
+function renderHPLife(person) {
+    person.elHP.innerText = person.damageHP + ' / ' + person.defaultHP;
+}
+
+function renderProgressbarHP(person) {
+    person.elProgressbar.style.width = person.damageHP + '%';
+}
+
+function changeHP(count, person) {
+    if (person.damageHP < count) {
+        person.damageHP = 0;
+        alert('Бедный ' + person.name +' проиграл бой!');
+        $btn.disabled = true;
+    } else {
+        person.damageHP -= count;
+    }
+    renderHP(person);
+}
+
+function random(num) {
+    return Math.ceil(Math.random() * num);
+}
+
+init();
